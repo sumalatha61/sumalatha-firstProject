@@ -1,0 +1,7 @@
+<div class="form-group">
+    <input [appInputFormat]="'lowercase'" placeholder="Add an item:" class="form-control" type="text" id="item-input"
+        #newItem>
+</div>
+<div class="form-group">
+    <button class="btn btn-primary" (click)="addNewItem(newItem.value)">Add to parent's list</button>
+</div>

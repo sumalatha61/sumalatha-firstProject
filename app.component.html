@@ -1,0 +1,65 @@
+<div style="text-align: center;color: darkturquoise;font-size: xx-large;">{{topic}}</div>
+<hr style="width: 300px;color: #ff003b;height: 2px;margin: auto;">
+
+<table style="margin: auto;width: 1200px;">
+    <tr>
+        <td>
+            <ul>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/home'">Home</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/course'">Courses</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/login'">Login</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/registration'">Registration</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/input-output'">Input-Output</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/contact-form'">Contact-Form</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/post'">Post</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/invoice'">Invoice</a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="'active'" [routerLink]="'/department'">Department</a>
+                </li>
+                <li>
+                    <a (click)="logout()">Logout</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<router-outlet></router-outlet>
+<!-- <div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'home'">
+        <home></home>
+    </div>
+    <div *ngSwitchCase="'courses'">
+        <courses></courses>
+    </div>
+    <div *ngSwitchCase="'login'">
+        <login></login>
+    </div>
+    <div *ngSwitchCase="'registration'">
+        <registration></registration>
+    </div>
+    <div *ngSwitchCase="'input-output'">
+        <app-parent></app-parent>
+    </div>
+    <div *ngSwitchCase="'contact-form'">
+        <contact-form></contact-form>
+    </div>
+    <div *ngSwitchCase="'post'">
+        <post></post>
+    </div>
+</div> -->

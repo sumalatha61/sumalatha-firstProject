@@ -1,0 +1,36 @@
+<div class="card componentStyle">
+    <form #contactForm="ngForm">
+        <div class="form-group">
+            <label class="form-label" for="txtFirstName">First Name</label>
+            <input #txtFirstName="ngModel" required ngModel name="txtFirstName" class="form-control" type="text"
+                id='txtFirstName'>
+            <div *ngIf="txtFirstName.touched && txtFirstName.invalid" class="alert alert-danger" role="alert">
+                First Name is required..!
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="txtLastName">
+        </div>
+        <div class="form-group">
+            <label for="txtEmail" class="form-label">Email Address</label>
+            <input pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required #txtEmail="ngModel" ngModel name="txtEmail"
+                type="text" class="form-control" id="txtEmail">
+            <div *ngIf="txtEmail.touched && txtEmail.invalid">
+                <div *ngIf="txtEmail.errors['required']" class="alert alert-danger" role="alert">
+                    Email is required..!
+                </div>
+                <div *ngIf="txtEmail.errors['pattern']" class="alert alert-danger" role="alert">
+                    Enter Proper email..!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="txtComments" class="form-label">Comments</label>
+            <textarea class="form-control" cols="10" rows="5" id="txtComments"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="button" [disabled]="contactForm.invalid" class="btn btn-primary" value="Submit">
+        </div>
+    </form>
+</div>

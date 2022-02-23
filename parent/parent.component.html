@@ -1,0 +1,8 @@
+<div class="card componentStyle">
+    <app-child-output (newItemEvent)="addItem($event)"></app-child-output>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let fruit of fruits">
+            <app-child-input [fruitName]="fruit"></app-child-input>
+        </li>
+    </ul>
+</div>

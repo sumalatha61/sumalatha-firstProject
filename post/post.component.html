@@ -1,0 +1,78 @@
+<div class="card componentStyle">
+    <div style="text-align: right;margin-bottom: 5px;">
+        <a (click)="addPost()" data-bs-toggle="modal" data-bs-target="#mpPost" class="btn btn-primary">
+            +ADD
+        </a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">User Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Action(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of lstPost | paginate: { itemsPerPage: 5, currentPage: defaultPage }">
+                <th scope="row">{{post.id}}</th>
+                <td>{{post.userId}}</td>
+                <td>{{post.title}}</td>
+                <td>
+                    <button (click)="deletePost(post.id)" type="button" class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>&nbsp;
+                    <a [routerLink]="['/post',post.id]" [queryParams]="{userId : post.userId,title: post.title}"
+                        class="btn btn-info"><i class="fa-solid fa-eye"></i></a>&nbsp;
+                    <button (click)="editPost(post)" data-bs-toggle="modal" data-bs-target="#mpPost" type="button"
+                        class="btn btn-secondary">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center" colspan="4">
+                    <pagination-controls (pageChange)="defaultPage = $event"></pagination-controls>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="mpPost" tabindex="-1" aria-labelledby="mpPostTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mpPostTitle">{{title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div *ngIf="alertMessage" class="alert alert-success" role="alert">
+                            {{alertMessage}}
+                        </div>
+                        <div class="form-group">
+                            <label for="txtUserId" class="col-form-label">User Id:</label>
+                            <input name="txtUserId" [disabled]="title=='View a post'" [(ngModel)]="postModel.userId"
+                                type="number" class="form-control" id="txtUserId">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTitle" class="col-form-label">Title:</label>
+                            <input name="txtTitle" [disabled]="title=='View a post'" [(ngModel)]="postModel.title"
+                                type="text" class="form-control" id="txtTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtBody" class="col-form-label">Body:</label>
+                            <textarea name="txtBody" [disabled]="title=='View a post'" cols="5" rows="5"
+                                [(ngModel)]="postModel.body" type="text" class="form-control" id="txtBody"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="savePostDetail()" [hidden]="title=='View a post'"
+                        class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

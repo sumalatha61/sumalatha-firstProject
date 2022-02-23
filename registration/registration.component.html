@@ -1,0 +1,71 @@
+<div class="card componentStyle">
+    <table style="margin: auto;width: 950px;">
+        <tr>
+            <td style="width: 40%;">
+                <img style="border-radius: 50%;height:300px;width:300px" [src]="imgUrl">
+            </td>
+            <td style="width: 10%;">
+                <div style="border-left: 3px solid green;height: 300px;"></div>
+            </td>
+            <td style="width: 50%;">
+                <div class="card">
+                    <form [formGroup]="registerForm">
+                        <div class="card-header text-center">
+                            <b>{{title}}</b>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="txtEmail" class="form-label">Email Address</label>
+                                <input formControlName="emailAddress" id="txtEmail" type="text" class="form-control">
+                                <div *ngIf="email.touched && email.invalid">
+                                    <div *ngIf="email.errors['required']" class="alert alert-danger">
+                                        Please enter email..!
+                                    </div>
+                                    <div *ngIf="email.errors['pattern']" class="alert alert-danger">
+                                        Please enter proper email..!
+                                    </div>
+                                    <div *ngIf="email.errors['notUnique']" class="alert alert-danger">
+                                        Email address should be unique..!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtPassword" class="form-label">Password</label>
+                                <input formControlName="password" id="txtPassword" type="password" class="form-control">
+                                <div *ngIf="password.touched && password.invalid">
+                                    <div *ngIf="password.errors['required']" class="alert alert-danger">
+                                        Please enter password..!
+                                    </div>
+                                    <div *ngIf="password.errors['containSpace']" class="alert alert-danger">
+                                        Password shouldn't contain space..! Occured at {{password.errors['position']}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtMobile" class="form-label">Mobile Number</label>
+                                <input formControlName="mobileNumber" id="txtMobile" type="text" class="form-control">
+                                <div *ngIf="mobileNumber.touched && mobileNumber.invalid">
+                                    <div *ngIf="mobileNumber.errors['required']" class="alert alert-danger">
+                                        Please enter mobile number..!
+                                    </div>
+                                    <div *ngIf="mobileNumber.errors['containSpace']" class="alert alert-danger">
+                                        Mobile number shouldn't contain space..! Occured at
+                                        {{mobileNumber.errors['position']}}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                            <button type=" button" [disabled]="registerForm.invalid" (click)="register()"
+                                class="btn btn-primary">
+                                Register</button> &nbsp;
+                            <button type=" button" class="btn btn-secondary">
+                                Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

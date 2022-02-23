@@ -1,0 +1,75 @@
+<div class="card componentStyle">
+    <div style="text-align: right;margin-bottom: 5px;">
+        <a data-bs-toggle="modal" (click)="addCourse()" data-bs-target="#mpCourse" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            ADD
+        </a>
+    </div>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>#Id</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Action(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let course of lstCourse">
+                <td>{{course.id}}</td>
+                <td>{{course.name}} </td>
+                <td>{{course.duration}}</td>
+                <td>
+                    <a [routerLink]="['/course',course.id]" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                    &nbsp;
+                    <a (click)="editCourse(course)" data-bs-toggle="modal" data-bs-target="#mpCourse"
+                        class="btn btn-secondary"><i class="fas fa-pen-square"></i></a>&nbsp;
+                    <a (click)="deleteCourse(course.id)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="mpCourse" tabindex="-1" aria-labelledby="mpCourseTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mpCourseTitle">{{title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtName" class="col-form-label">Name:</label>
+                            <input [(ngModel)]="courseModel.name" name="txtName" type="text" class="form-control"
+                                id="txtName">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDuration" class="col-form-label">Duration:</label>
+                            <input [(ngModel)]="courseModel.duration" name="txtDuration" type="text"
+                                class="form-control" id="txtDuration">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFaculty" class="col-form-label">Faculty:</label>
+                            <input [(ngModel)]="courseModel.faculty" name="txtFaculty" type="text" class="form-control"
+                                id="txtFaculty">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtInstitution" class="col-form-label">Institution:</label>
+                            <input [(ngModel)]="courseModel.instituion" name="txtInstitution" type="text"
+                                class="form-control" id="txtInstitution">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFee" class="col-form-label">Fee:</label>
+                            <input [(ngModel)]="courseModel.fee" name="txtFee" type="number" class="form-control"
+                                id="txtFee">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="saveCourse()" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
