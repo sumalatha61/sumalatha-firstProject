@@ -9,7 +9,7 @@ import { UserValidators } from "../user.validators";
 
 export class RegistrationComponent {
     title = 'Registration';
-    imgUrl: string = "https://news.microsoft.com/wp-content/uploads/prod/sites/612/2021/06/cropped-Header_Image.jpg";
+    imgUrl: string = "http://s1.picswalls.com/wallpapers/2014/02/08/spring-desktop-background_03111888_25.jpg";
 
     registerForm = new FormGroup({
         emailAddress: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$')], UserValidators.shouldBeUnique),

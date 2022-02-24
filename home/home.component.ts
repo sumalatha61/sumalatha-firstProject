@@ -11,6 +11,6 @@ import { TestService } from "../test.service";
 })
 
 export class HomeComponent {
-    imgUrl: string = '../assets/Profile.png';
+    imgUrl: string = 'https://www.quizony.com/what-type-of-flower-am-i/imageForSharing.jpg';
 
 }

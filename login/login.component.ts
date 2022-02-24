@@ -8,15 +8,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
   title = 'Login';
-  emailAddress: string = 'sreeram@outlook.com';
-  password: string = '12345';
-  imgUrl: string = "https://news.microsoft.com/wp-content/uploads/prod/sites/612/2021/06/cropped-Header_Image.jpg";
+  emailAddress: string = 'sada@gmail.com';
+  password: string = '123';
+  imgUrl: string = "http://s1.picswalls.com/wallpapers/2014/02/08/spring-desktop-background_03111888_25.jpg";
   constructor(private toastrService: ToastrService) {
 
   }
   login() {
     //API call 
-    let userInfo = [{ email: 'sreeram@gmail.com', password: '123', isAdmin: false }, { email: 'admin@gmail.com', password: '12345', isAdmin: true }];
+    let userInfo = [{ email: 'sumalatha@gmail.com', password: '12345', isAdmin: false },
+       { email: 'admin@gmail.com', password: '123', isAdmin: true }];
     let filterUser = userInfo.filter(x => x.email === this.emailAddress && x.password == this.password);
     if (filterUser && filterUser.length > 0) {
       localStorage.setItem('isAuthenticated', 'True');
